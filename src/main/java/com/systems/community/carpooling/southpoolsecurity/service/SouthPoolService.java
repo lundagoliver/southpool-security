@@ -40,4 +40,19 @@ public class SouthPoolService {
 		}
 		log.info(result);
 	}
+	
+	@Async
+	public void sendMessageToAdmin(String text, String chatId, SouthPoolSettings southPoolSettings) throws UnsupportedEncodingException {
+		String url = MessageFormat.format(southPoolSettings.getTelegramApiUrl(), southPoolSettings.getGroupchatSenderBotToken());
+		String result = null;
+		try {
+			String sendRequest = UriComponentsBuilder.fromUriString(url).queryParam("chat_id", chatId)
+					.queryParam("text",text.replace("&", "and")).build().toUriString();
+			log.info(sendRequest);
+			result = restHttpClient.getDefaultRestTemplate().exchange(sendRequest, HttpMethod.GET, null, String.class).getBody();
+		} catch (RestClientException e) {
+			log.error(e);
+		}
+		log.info(result);
+	}
 }

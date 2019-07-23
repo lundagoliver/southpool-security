@@ -20,6 +20,11 @@ public interface Member {
 	public Date getUpdateDate();
 	public Date getRegisterDate();
 	public String getCustomMessage();
+	public String getTag();
+	public Integer getPostCount();
+	public String getAdmin();
+	public String getJoinGroup();
+	public long getStar();
 	
 	public void setId(Long id);
 	public void setName(String name);
@@ -37,4 +42,10 @@ public interface Member {
 	public void setUpdateDate(Date updateDate);
 	public void setRegisterDate(Date registerDate);
 	public void setCustomMessage(String custom_message);
+	public void setTag(String tag);
+	public void setPostCount(Integer postCount);
+	public void setAdmin(String admin);
+	public void setJoinGroup(String joinGroup);
+	public void setStar(long star);
+	
 }

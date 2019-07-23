@@ -10,6 +10,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -80,4 +81,45 @@ public class SouthPoolMemberWorkToHome implements Serializable, Member {
 	
 	@Column(name="custom_message")
 	private String customMessage;
+	
+	@Column(name="post_count")
+	private Integer postCount;
+	
+	@Column(name="allowed")
+	private String allowed;
+	
+	@Column(name="admin")
+	private String admin;
+	
+	@Column(name="chat_id")
+	private String chatId;
+	
+	@Column(name="join_group")
+	private String joinGroup;
+
+	@Transient
+	@Override
+	public String getTag() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	@Transient
+	@Override
+	public void setTag(String tag) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public long getStar() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public void setStar(long star) {
+		// TODO Auto-generated method stub
+		
+	}
 }
