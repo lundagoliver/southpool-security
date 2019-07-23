@@ -45,16 +45,21 @@ public class SouthPoolSecurityController extends TelegramLongPollingBot {
 		
 		log.info("chatId : " + chatId);
 		log.info("messageId : " + messageId);
-		log.info("messageId : " +  update.getMessage().getText());
+		log.info("text : " +  update.getMessage().getText());
 		
 		if (update.hasMessage() && update.getMessage().hasText()) {
 			
 			//Check if username is set already. If username is not yet set, show some information how to do it.
 			if (username == null) {
-				try {
-					southPoolService.sendMessageToAdmin("This user has not yet set his/her username : " + name + " " + lastName ,southPoolSettings.getGroupChatIdAdmins(), southPoolSettings);
-				} catch (UnsupportedEncodingException e) {
-					log.error("{}", e);
+				if (chatId == -335962876) {
+					log.info("Skip!, this is a bot message. Message id : " + messageId);
+				}
+				else {
+					try {
+						southPoolService.sendMessageToAdmin("This user has not yet set his/her username : " + name + " " + lastName ,southPoolSettings.getGroupChatIdAdmins(), southPoolSettings);
+					} catch (UnsupportedEncodingException e) {
+						log.error("{}", e);
+					}	
 				}
 			}
 			else {
